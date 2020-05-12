@@ -1,0 +1,28 @@
+class Solution(object):
+    def minimumAbsDifference(self, arr):
+
+        min = abs(arr[0] - arr[1])
+        result = []
+        pair = []
+        for i in range(0,len(arr)):
+            for j in range(i + 1,len(arr)):
+                if abs(arr[i]-arr[j]) <= min:
+                    min = abs(arr[i]-arr[j])
+        for i in range(0,len(arr)):
+            for j in range(i + 1,len(arr)):
+                if abs(arr[i] - arr[j]) == min:
+                    if arr[i] < arr[j]:
+                        pair.append(arr[i])
+                        pair.append(arr[j])
+                    else:
+                        pair.append(arr[j])
+                        pair.append(arr[i])
+                    result.append(pair[:])
+                    del pair[:]
+        result.sort()
+
+        return result
+
+print(Solution.minimumAbsDifference(0,[4,2,1,3]))
+print(Solution.minimumAbsDifference(0,[1,3,6,10,15]))
+print(Solution.minimumAbsDifference(0,[3,8,-10,23,19,-4,-14,27]))
